@@ -21,7 +21,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "ft/healthcheck-bundle": "dev-addConfigurableHealthChecks"
+        "ft/healthcheck-bundle": "dev-addConfigurableHealthChecks",
+        "ezsystems/ezpublish-kernel": "^v6.13"
     },
     "autoload" : {
         "psr-4": { "FT\\": "src/" }
