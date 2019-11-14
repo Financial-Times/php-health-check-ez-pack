@@ -11,11 +11,11 @@ use FT\HealthCheckBundle\HealthCheck\HealthCheck;
 use FT\HealthCheckBundle\HealthCheck\HealthCheckHandlerInterface;
 
 /**
- * Health check for testing eZ Persistance caches
+ * Health check for testing eZ Persistence caches
  */
-class PersistanceCacheHealthCheck implements HealthCheckHandlerInterface
+class PersistenceCacheHealthCheck implements HealthCheckHandlerInterface
 {
-    const HEALTH_CHECK_ID = 'PersistanceCacheHealthCheck';
+    const HEALTH_CHECK_ID = 'PersistenceCacheHealthCheck';
     const HEALTH_CHECK_CACHE_KEY = 'health_check.ez.cache_test';
     const HEALTH_CHECK_CACHE_VALUE = 'A Test Value';
     const HEALTH_CHECK_TTL = 10;

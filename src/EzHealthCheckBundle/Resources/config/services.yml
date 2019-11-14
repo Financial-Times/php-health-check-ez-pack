@@ -6,7 +6,7 @@ services:
     tags: [{ name: health_check.configurable, priority: 200 }]
 
   health_check.ez.cache:
-    class: FT\EzHealthCheckBundle\HealthChecks\PersistanceCacheHealthCheck
+    class: FT\EzHealthCheckBundle\HealthChecks\PersistenceCacheHealthCheck
     arguments:
       - "@ezpublish.cache_pool"
     tags: [{ name: health_check.configurable, priority: 205 }]
