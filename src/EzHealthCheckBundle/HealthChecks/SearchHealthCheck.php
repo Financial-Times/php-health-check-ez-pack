@@ -58,7 +58,7 @@ class SearchHealthCheck implements HealthCheckHandlerInterface
 
         return $healthCheck
             ->withId(self::HEALTH_CHECK_ID)
-            ->withName('Is search engine available')
+            ->withName('Is search engine available?')
             ->withOk($ok)
             ->withSeverity($severity)
             ->withPanicGuide('Check that the application can connect to the configured search engine. Also check if the configured search engine is online.')
