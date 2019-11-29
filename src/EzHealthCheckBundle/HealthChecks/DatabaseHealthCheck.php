@@ -21,7 +21,7 @@ class DatabaseHealthCheck implements HealthCheckHandlerInterface
     protected $entityManager;
 
     /**
-     * @param EntityManager $repository
+     * @param EntityManager $entityManager
      */
     public function __construct(EntityManager $entityManager)
     {

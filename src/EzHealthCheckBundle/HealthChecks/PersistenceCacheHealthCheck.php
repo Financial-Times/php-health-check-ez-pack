@@ -26,7 +26,7 @@ class PersistenceCacheHealthCheck implements HealthCheckHandlerInterface
     protected $cachePool;
 
     /**
-     * @param EntityManager $repository
+     * @param PoolInterface $cachePool
      */
     public function __construct(PoolInterface $cachePool)
     {
