@@ -4,7 +4,7 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/Financial-Times/php-health-check"}
+        { "type": "composer", "url": "https://composer.in.ft.com" }
     ],
     "authors": [
         {
@@ -21,7 +21,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "ft/healthcheck-bundle": "dev-addConfigurableHealthChecks",
+        "ft/healthcheck-bundle": "^1.0",
         "ezsystems/ezpublish-kernel": "^v6.13"
     },
     "autoload" : {
