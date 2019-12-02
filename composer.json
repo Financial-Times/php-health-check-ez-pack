@@ -1,0 +1,30 @@
+{
+    "name": "ft/php-health-check-ez-pack",
+    "description": "A pack of healthchecks for eZ Platform 1.13",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/Financial-Times/php-health-check"}
+    ],
+    "authors": [
+        {
+            "name": "Ryan Lee",
+            "email": "rol@bluetel.co.uk"
+        }
+    ],
+    "keywords" : [
+        "FT",
+        "Healthcheck",
+        "Symfony",
+        "eZ",
+        "eZ Platform"
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "ft/healthcheck-bundle": "dev-addConfigurableHealthChecks",
+        "ezsystems/ezpublish-kernel": "^v6.13"
+    },
+    "autoload" : {
+        "psr-4": { "FT\\": "src/" }
+    }
+}
