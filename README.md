@@ -1,5 +1,5 @@
 # php-health-check-ez-pack
-A pack of health checks to use with eZ Platform v1.13 and https://github.com/Financial-Times/php-health-check
+A pack of health checks to use with Ibexa platform 3.3 and https://github.com/Financial-Times/php-health-check
 
 ## Contents
 This health check pack contains a set of checks for eZ Core functionality. Currently this includes checks for search, database and persistence cache.
@@ -9,12 +9,13 @@ Please refer to the [php health check bundle](https://github.com/Financial-Times
 
 To install register the health bundle:
 ```php
-    $bundles = [
-        ...
-        new FT\HealthCheckBundle\HealthCheckBundle(),
-        new FT\EzHealthCheckBundle\EzHealthCheckBundle(),
-        ...
-    ]
+<?php
+return [
+    ...
+    FT\HealthCheckBundle\HealthCheckBundle::class => ['all' => true],
+    FT\EzHealthCheckBundle\EzHealthCheckBundle::class => ['all' => true]
+    ...
+]
 ```
 
 ## Config
