@@ -3,12 +3,10 @@
 namespace FT\EzHealthCheckBundle\HealthChecks;
 
 use Exception;
-use RedisException;
-use Doctrine\ORM\EntityManager;
 use Stash\Interfaces\PoolInterface;
-use eZ\Publish\API\Repository\Repository;
 use FT\HealthCheckBundle\HealthCheck\HealthCheck;
 use FT\HealthCheckBundle\HealthCheck\HealthCheckHandlerInterface;
+use Psr\Cache\CacheItemPoolInterface;
 
 /**
  * Health check for testing eZ Persistence caches
@@ -28,7 +26,7 @@ class PersistenceCacheHealthCheck implements HealthCheckHandlerInterface
     /**
      * @param PoolInterface $cachePool
      */
-    public function __construct(PoolInterface $cachePool)
+    public function __construct(CacheItemPoolInterface $cachePool)
     {
         $this->cachePool = $cachePool;
     }
@@ -44,20 +42,18 @@ class PersistenceCacheHealthCheck implements HealthCheckHandlerInterface
             // Cycle between retrieving and setting the same cache item every few pings to this health check that caches are writable and readable. 
             // If either step fails it is assumed there is something majorly wrong with the caches and the check fails.
             $testCacheItem = $this->cachePool->getItem(self::HEALTH_CHECK_CACHE_KEY);
-            if ($testCacheItem->isMiss()) {
+            if (!$testCacheItem->isHit()) {
                 $testCacheItem->set(self::HEALTH_CHECK_CACHE_VALUE);
-                $testCacheItem->setTTL(self::HEALTH_CHECK_TTL);
-                $testCacheItem->save();
+                $testCacheItem->expiresAfter(self::HEALTH_CHECK_TTL);
+                $this->cachePool->save($testCacheItem);
                 $ok = true;
             } else {
                 if(!$ok = $testCacheItem->get() === self::HEALTH_CHECK_CACHE_VALUE){
                     $healthCheck->withCheckOutput('Mismatch in expected states between cache write and load');
                 }
             }
-        } catch (RedisException $e){
-            $healthCheck->withCheckOutput('Failed to establish a connection to Redis');
         } catch (Exception $e){
-            $healthCheck->withCheckOutputException($e);
+            $healthCheck->withCheckOutputThrowable($e);
         }
 
         return $healthCheck

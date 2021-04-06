@@ -21,8 +21,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "ft/healthcheck-bundle": "^1.0",
-        "ezsystems/ezpublish-kernel": "^v6.13"
+        "ft/healthcheck-bundle": "^5",
+        "ezsystems/ezplatform-kernel": "^v1.3"
     },
     "autoload" : {
         "psr-4": { "FT\\": "src/" }
