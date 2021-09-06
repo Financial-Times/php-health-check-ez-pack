@@ -21,7 +21,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "ft/healthcheck-bundle": "^5",
+        "ft/healthcheck-bundle": "dev-feature/NA-3425",
         "ezsystems/ezplatform-kernel": "^v1.3"
     },
     "autoload" : {
